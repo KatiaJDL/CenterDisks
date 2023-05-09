@@ -37,12 +37,13 @@ For general debugging and help to run the scripts: <br>
 
 | Datasets (test sets) |   AP  | AP50% | Runtime (s) | weights                                                                                                                                                 |
 |:--------------------:|:-----:|-------|-------------|---------------------------------------------------------------------------------------------------------------------------------------------------------|
-| cityscapes           | 7.36 | 25.89 | 0.040       | [link]() |
-| KITTI                | 11.75 | 37.24 | 0.032       | [link]() |
-| IDD                  | 6.70 | 21.40 | 0.033       | [link]() |
+| cityscapes           | 7.36 | 25.89 | 0.040       | [link](https://polymtlca0-my.sharepoint.com/:u:/g/personal/katia_jodogne--del-litto_polymtl_ca/EbrR4Vx8lL5LlKxrX2OljpwBQJxj_Tb1ku6xycsgGogkQQ?e=IhNEU8) |
+| KITTI                | 11.75 | 37.24 | 0.032       | [link](https://polymtlca0-my.sharepoint.com/:u:/g/personal/katia_jodogne--del-litto_polymtl_ca/EXFMImX8TMVKosDeonNoReUBiYnPF2rNLEh8zTTF9zdoiw?e=nUIxEx) |
+| IDD                  | 6.70 | 21.40 | 0.033       | [link](https://polymtlca0-my.sharepoint.com/:u:/g/personal/katia_jodogne--del-litto_polymtl_ca/EYgRQhEw0i5Ekuja4pigE6oBlaO43cfE_wXvdYJfgtuVDg?e=i88O39) |
 
 ## Models
 
+https://polymtlca0-my.sharepoint.com/:f:/g/personal/katia_jodogne--del-litto_polymtl_ca/ErwvXbsztOpNvtqLw-bWZakBSZV4XtgJyeEXXr-Z2nARQw?e=3uDYa0
 
 ## Acknowledgements
 The code for this paper is mainly built upon [CenterPoly](https://github.com/hu64/CenterPoly) and [CenterNet](https://github.com/xingyizhou/CenterNet), we would therefore like to thank the authors for providing the source code of their paper. We also acknowledge the support of the Natural Sciences and Engineering Research Council of Canada (NSERC), and the support of IVADO [MSc-2022-4713306544].
