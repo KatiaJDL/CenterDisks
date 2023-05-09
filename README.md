@@ -9,9 +9,11 @@ Repository for the paper
 
 
 ## Example results
-Ground-truth      |  Disks covering
+Initial image      |  Disks covering
 :-------------------------:|:-------------------------:
-![](imgs/bielefeld_000000_026550_full_v1_zoom.png)  |  ![](imgs/bielefeld_000000_026550_full_v2_zoom.png)
+![](imgs/frankfurt_000000_012121_base.png)  |  ![](imgs/frankfurt_000000_012121_leftImg8bit.png)
+![](imgs/frankfurt_000001_035864_base.png)  |  ![](imgs/frankfurt_000001_035864_leftImg8bit.png)
+![](imgs/frankfurt_000001_073464_base.png)  |  ![](imgs/frankfurt_000001_073464_leftImg8bit.png)
 
 ## Requirements:
 - python 3.8
@@ -35,12 +37,12 @@ For general debugging and help to run the scripts: <br>
 
 | Datasets (test sets) |   AP  | AP50% | Runtime (s) | weights                                                                                                                                                 |
 |:--------------------:|:-----:|-------|-------------|---------------------------------------------------------------------------------------------------------------------------------------------------------|
-| cityscapes           | 16.64 | 39.42 | 0.045       | [link](https://polymtlca0-my.sharepoint.com/:u:/g/personal/katia_jodogne--del-litto_polymtl_ca/EQIz3Vm96pFNqIZBF-BcK48BzcEXAIEK35cDupRb0uTfmw?e=3Zb7Sq) |
-| KITTI                |  8.86 | 26.86 | 0.045       | [link](https://polymtlca0-my.sharepoint.com/:u:/g/personal/katia_jodogne--del-litto_polymtl_ca/ETprojfO4-JInpakjuxcDnIBJVTLh1Oz1Pcv4JtLQTZ5HQ?e=8JBlft) |
-| IDD                  | 17.40 | 45.10 | 0.045       | [link](https://polymtlca0-my.sharepoint.com/:u:/g/personal/katia_jodogne--del-litto_polymtl_ca/EeLV5WjLXSxEqOD84_YCjmABELKItvE4uamHZOa7od3Bvw)          |
+| cityscapes           | 7.36 | 25.89 | 0.040       | [link]() |
+| KITTI                | 11.75 | 37.24 | 0.032       | [link]() |
+| IDD                  | 6.70 | 21.40 | 0.033       | [link]() |
 
 ## Models
-https://polymtlca0-my.sharepoint.com/:f:/g/personal/katia_jodogne--del-litto_polymtl_ca/EtvCinAQKlNJiekvaNMbAkMBwfzJd9yghBvUMIHZiL6uBw
+
 
 ## Acknowledgements
 The code for this paper is mainly built upon [CenterPoly](https://github.com/hu64/CenterPoly) and [CenterNet](https://github.com/xingyizhou/CenterNet), we would therefore like to thank the authors for providing the source code of their paper. We also acknowledge the support of the Natural Sciences and Engineering Research Council of Canada (NSERC), and the support of IVADO [MSc-2022-4713306544].
