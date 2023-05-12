@@ -251,7 +251,7 @@ class IDD(data.Dataset):
                     gaussian_img = Image.fromarray((pred_gaussian*255).astype(np.uint8))
 
                     
-                    if score >= 0.5:
+                    if float(score) >= 0.5:
                         to_remove_mask += np.array(gaussian_img)
                         to_remove_mask[to_remove_mask > 0] = 1
                     gaussian_img.save(os.path.join(write_dir, mask_path))

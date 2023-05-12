@@ -131,7 +131,11 @@ def gaussiandet_post_process(dets, c, s, h, w, num_classes, num_radius):
     dets[i, :, 2:4] = transform_preds(dets[i, :, 2:4], c[i], s[i], (w, h))
     for j in range(6, dets.shape[-1]-1 -num_radius, 2):
       dets[i, :, j:j+2] = transform_preds(dets[i, :, j:j+2], c[i], s[i], (w, h))
-    dets[i, :, -1-num_radius:-1] *= 8
+    if not isinstance(s[i], np.ndarray) and not isinstance(s[i], list):
+      scale = np.array([s[i], s[i]], dtype=np.float32)
+    else:
+      scale = s[i]
+    dets[i, :, -1-num_radius:-1] *= scale[0] / w
     classes = dets[i, :, 5]
     for j in range(num_classes):
       inds = (classes == j)

@@ -53,7 +53,7 @@ class GaussianDetector(BaseDetector):
         num_radius = 4
     elif self.opt.r_variation == 'all_different' or self.opt.r_variation == 'composed':
         num_radius = self.opt.nbr_points
-    length = len(dets[0][1]-1)
+    length = len(dets[0][1])-1
     dets = gaussiandet_post_process(
         dets.copy(), [meta['c']], [meta['s']],
         meta['out_height'], meta['out_width'], self.opt.num_classes, num_radius)

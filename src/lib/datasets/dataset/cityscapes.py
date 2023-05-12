@@ -19,7 +19,6 @@ from shapely.geometry import Polygon
 import wandb
 import matplotlib.pyplot as plt
 import seaborn as sns
-from models.losses import individual_gaussian
 
 DRAW = False
 

@@ -94,33 +94,32 @@ class PolydetLoss(torch.nn.Module):
             #        hm_loss += self.crit(im_tensor, batch['hm']) / opt.num_stacks
             #hm_loss /= output['hm'].shape[0]*output['hm'].shape[1]
 
-            elif opt.task == 'polydet':
-                # border_hm_loss += self.crit(output['border_hm'], batch['border_hm']) / opt.num_stacks
-                # area_loss += self.area_poly(output['poly'], batch['reg_mask'], batch['ind'], batch['instance'], batch['centers']) / opt.num_stacks
-                # print(output['poly'].shape)
-                if opt.cat_spec_poly:
-                    poly_loss += self.crit_poly(
-                        output['poly'], batch['cat_spec_mask'],
-                        batch['ind'], batch['cat_spec_poly'], hm = output['hm']) / opt.num_stacks
-                elif opt.dense_poly:
-                    mask_weight = batch['dense_poly_mask'].sum() + 1e-4
-                    poly_loss += (self.crit_dense_poly(output['poly'] * batch['dense_poly_mask'],
-                                                       batch['dense_poly'] * batch['dense_poly_mask']) / mask_weight)\
-                                 / opt.num_stacks
+            # border_hm_loss += self.crit(output['border_hm'], batch['border_hm']) / opt.num_stacks
+            # area_loss += self.area_poly(output['poly'], batch['reg_mask'], batch['ind'], batch['instance'], batch['centers']) / opt.num_stacks
+            # print(output['poly'].shape)
+            if opt.cat_spec_poly:
+                poly_loss += self.crit_poly(
+                    output['poly'], batch['cat_spec_mask'],
+                    batch['ind'], batch['cat_spec_poly'], hm = output['hm']) / opt.num_stacks
+            elif opt.dense_poly:
+                mask_weight = batch['dense_poly_mask'].sum() + 1e-4
+                poly_loss += (self.crit_dense_poly(output['poly'] * batch['dense_poly_mask'],
+                                                    batch['dense_poly'] * batch['dense_poly_mask']) / mask_weight)\
+                                / opt.num_stacks
+            else:
+                if opt.poly_order :
+                    poly, order = self.crit_poly(output['poly'], batch[
+                        'reg_mask'], batch['ind'], batch['poly'], freq_mask = batch['freq_mask'], peak = batch['peak'], hm = output['hm'])
+                    poly_loss += poly / opt.num_stacks
+                    order_loss += order /opt.num_stacks
                 else:
-                    if opt.poly_order :
-                        poly, order = self.crit_poly(output['poly'], batch[
-                            'reg_mask'], batch['ind'], batch['poly'], freq_mask = batch['freq_mask'], peak = batch['peak'], hm = output['hm'])
-                        poly_loss += poly / opt.num_stacks
-                        order_loss += order /opt.num_stacks
-                    else:
-                        poly_loss += self.crit_poly(output['poly'], batch[
-                            'reg_mask'], batch['ind'], batch['poly'],  freq_mask = batch['freq_mask'], peak =batch['peak'], hm = output['hm']) / opt.num_stacks
-                        # poly_loss += self.crit_poly(output['poly'], batch['reg_mask'],  # batch['freq_mask'],batch['ind'], batch['poly']) / opt.num_stacks
+                    poly_loss += self.crit_poly(output['poly'], batch[
+                        'reg_mask'], batch['ind'], batch['poly'],  freq_mask = batch['freq_mask'], peak =batch['peak'], hm = output['hm']) / opt.num_stacks
+                    # poly_loss += self.crit_poly(output['poly'], batch['reg_mask'],  # batch['freq_mask'],batch['ind'], batch['poly']) / opt.num_stacks
 
-            if opt.reg_offset and opt.off_weight > 0:
-                off_loss += self.crit_reg(output['reg'], batch['reg_mask'],
-                                          batch['ind'], batch['reg']) / opt.num_stacks
+        if opt.reg_offset and opt.off_weight > 0:
+            off_loss += self.crit_reg(output['reg'], batch['reg_mask'],
+                                        batch['ind'], batch['reg']) / opt.num_stacks
 
         # import cv2
         # import os

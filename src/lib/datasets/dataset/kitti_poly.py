@@ -206,7 +206,7 @@ class KITTIPOLY(data.Dataset):
                     pred_gaussian = individual_gaussian(pred_gaussian, centers, r, self.opt.gaussian_ceiling)
                     pred_gaussian = (pred_gaussian>self.opt.threshold)
                     gaussian_img = Image.fromarray((pred_gaussian*255).astype(np.uint8))
-                    if score >= 0.5:
+                    if float(score) >= 0.5:
                         to_remove_mask += np.array(gaussian_img)
                         to_remove_mask[to_remove_mask > 0] = 1
                     gaussian_img.save(os.path.join(save_dir, mask_path))
@@ -251,7 +251,7 @@ class KITTIPOLY(data.Dataset):
                         r = float(bbox[-2])
                     else:
                         centers = list(map(self._to_float, bbox[5:5+2*self.opt.nbr_points]))
-                        radius = list(map(self._to_float, bbox[5+2*self.opt.nbr_points:-1]))
+                        r = list(map(self._to_float, bbox[5+2*self.opt.nbr_points:-1]))
                     detection = {
                         "image_id": int(image_id),
                         "category_id": int(category_id),

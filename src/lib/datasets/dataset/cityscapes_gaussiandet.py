@@ -90,21 +90,13 @@ class CITYSCAPES_GAUSSIAN(data.Dataset):
 
         base_dir = '../cityscapesStuff/BBoxes'
 
-        points = 8
-
         if split == 'test':
             self.annot_path = os.path.join(base_dir, 'test.json')
         elif split == 'val':
-            if FG:
-                self.annot_path = os.path.join(base_dir, 'val' + str(points) + '_real_points_fg3.json')
             else:
-                self.annot_path = os.path.join(base_dir, 'val' + str(points) + '_real_points.json')
-                self.annot_path_bbox = os.path.join(base_dir, 'val' + str(points) + '_regular_interval.json')
+                self.annot_path = os.path.join(base_dir, 'val8_real_points.json')
         else:
-            if FG:
-                self.annot_path = os.path.join(base_dir, 'train' + str(points) + '_real_points.json')
-            else:
-                self.annot_path = os.path.join(base_dir, 'train' + str(points) + '_real_points.json')
+            self.annot_path = os.path.join(base_dir, 'train8_real_points.json')
 
         self.max_objs = 128
         self.class_name = [
@@ -208,7 +200,7 @@ class CITYSCAPES_GAUSSIAN(data.Dataset):
                         r = float(bbox[-2])
                     else:
                         centers = list(map(self._to_float, bbox[5:5+2*self.opt.nbr_points]))
-                        radius = list(map(self._to_float, bbox[5+2*self.opt.nbr_points:-1]))
+                        r = list(map(self._to_float, bbox[5+2*self.opt.nbr_points:-1]))
                     detection = {
                         "image_id": int(image_id),
                         "category_id": int(category_id),
