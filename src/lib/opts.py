@@ -167,9 +167,9 @@ class opts(object):
                              help='polygon regression loss: l1 | iou | l1+iou | bce')
     self.parser.add_argument('--poly_order',  action='store_true',
                              help='polygon order loss')
-    self.parser.add_argument('--gaussian_loss', default='bce',
+    self.parser.add_argument('--gaussian_loss', default='dice',
                              help='gaussian disks loss: bce | dice')
-    self.parser.add_argument('--gaussian_ceiling', default='sigmoid',
+    self.parser.add_argument('--gaussian_ceiling', default='tanh',
                              help='gaussian disks ceiling is 1: sigmoid | clamp | tanh')
 
     self.parser.add_argument('--elliptical_gt', action='store_true',
@@ -248,7 +248,7 @@ class opts(object):
     # gaussian det
     self.parser.add_argument('--threshold', default=0.5,
                              help='threshold for pixel selection in gaussian detection')
-    self.parser.add_argument('--r_variation', default='one',
+    self.parser.add_argument('--r_variation', default='all_different',
                              help='radius modalities for the circle: one'
                                   ' two | four | all_different | composed')
     self.parser.add_argument('--dp', default=0.0, 
